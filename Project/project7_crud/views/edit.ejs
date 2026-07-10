@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edit Product</title>
+
+<link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+<h1>Edit Product</h1>
+
+<form
+action="/products/<%= product.id %>?_method=PUT"
+method="POST"
+class="form"
+>
+
+<input
+type="text"
+name="name"
+value="<%= product.name %>"
+required
+>
+
+<input
+type="text"
+name="image"
+value="<%= product.image %>"
+required
+>
+
+<input
+type="number"
+name="price"
+value="<%= product.price %>"
+required
+>
+
+<textarea
+name="desc"
+required
+><%= product.desc %></textarea>
+
+<button>
+
+Update Product
+
+</button>
+
+</form>
+
+</body>
+
+</html>
