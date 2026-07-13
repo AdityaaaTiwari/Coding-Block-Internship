@@ -8,7 +8,7 @@ const products = require("./data/product");
 const app = express();
 const PORT = 3000;
 
-// Middleware
+// ================= Middleware =================
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -21,12 +21,17 @@ app.get("/", (req, res) => {
     res.render("home", { products });
 });
 
-// ================= NEW FORM =================
+// ================= SHOW ALL PRODUCTS =================
+app.get("/products", (req, res) => {
+    res.render("home", { products });
+});
+
+// ================= NEW PRODUCT FORM =================
 app.get("/products/new", (req, res) => {
     res.render("new");
 });
 
-// ================= CREATE =================
+// ================= CREATE PRODUCT =================
 app.post("/products", (req, res) => {
 
     const { name, image, price, desc } = req.body;
@@ -41,24 +46,44 @@ app.post("/products", (req, res) => {
 
     products.push(newProduct);
 
-    res.redirect("/");
+    res.redirect("/products");
+
+});
+
+// ================= SHOW SINGLE PRODUCT =================
+app.get("/products/:id", (req, res) => {
+
+    const { id } = req.params;
+
+    const product = products.find((p) => p.id == id);
+
+    if (!product) {
+        return res.send("Product Not Found");
+    }
+
+    res.render("show", { product });
+
 });
 
 // ================= EDIT FORM =================
 app.get("/products/edit/:id", (req, res) => {
 
-    const id = req.params.id;
+    const { id } = req.params;
 
     const product = products.find((p) => p.id == id);
+
+    if (!product) {
+        return res.send("Product Not Found");
+    }
 
     res.render("edit", { product });
 
 });
 
-// ================= UPDATE =================
+// ================= UPDATE PRODUCT =================
 app.put("/products/:id", (req, res) => {
 
-    const id = req.params.id;
+    const { id } = req.params;
 
     const product = products.find((p) => p.id == id);
 
@@ -71,26 +96,28 @@ app.put("/products/:id", (req, res) => {
 
     }
 
-    res.redirect("/");
+    res.redirect("/products");
 
 });
 
-// ================= DELETE =================
+// ================= DELETE PRODUCT =================
 app.delete("/products/:id", (req, res) => {
 
-    const id = req.params.id;
+    const { id } = req.params;
 
     const index = products.findIndex((p) => p.id == id);
 
     if (index !== -1) {
+
         products.splice(index, 1);
+
     }
 
-    res.redirect("/");
+    res.redirect("/products");
 
 });
 
-// ================= SERVER =================
+// ================= START SERVER =================
 app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`Server Running : http://localhost:${PORT}`);
 });
