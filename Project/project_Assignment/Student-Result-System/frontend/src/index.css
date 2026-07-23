@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  background: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.error-message {
+  background: #ffe6e6;
+  color: #b00020;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.loading-text {
+  text-align: center;
+  color: #666;
+  margin-top: 16px;
+}
