@@ -22,34 +22,25 @@ const categories = [
 
 const Categories = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">Shop by Category</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-gray-500">
+            Browse a curated mix of categories designed for modern shoppers.
+          </p>
+        </div>
 
-        <h2 className="text-4xl font-bold text-center">
-          Shop by Category
-        </h2>
-
-        <p className="text-gray-500 text-center mt-3">
-          Explore products across different categories.
-        </p>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mt-12">
-
+        <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-8">
           {categories.map((item) => (
             <div
               key={item.name}
-              className="bg-white rounded-2xl shadow hover:shadow-xl transition duration-300 cursor-pointer p-6 flex flex-col items-center hover:-translate-y-2"
+              className="flex cursor-pointer flex-col items-center rounded-[12px] border border-slate-200 bg-slate-50 p-6 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
             >
-              <div className="text-blue-600 mb-4">
-                {item.icon}
-              </div>
-
-              <h3 className="font-semibold text-center">
-                {item.name}
-              </h3>
+              <div className="mb-4 text-blue-600">{item.icon}</div>
+              <h3 className="font-semibold text-slate-700">{item.name}</h3>
             </div>
           ))}
-
         </div>
       </div>
     </section>
