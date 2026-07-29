@@ -204,20 +204,6 @@ During this internship I strengthened my understanding of:
 
 ---
 
-# 📸 Screenshots
-
-You can add screenshots here for:
-
-- Home
-- Products
-- Cart
-- Wishlist
-- Seller Dashboard
-- Login
-- Register
-
----
-
 # 🤝 Connect With Me
 
 ## 👨‍💻 Aditya Tiwari
